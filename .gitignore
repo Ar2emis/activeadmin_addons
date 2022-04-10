@@ -15,4 +15,4 @@ spec/dummy/public/packs
 .tags_sorted_by_file
 vendor/bundle
 node_modules
-src
+dist

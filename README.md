@@ -58,6 +58,30 @@ $ rails g activeadmin_addons:install
 
 Check [here](docs/install_generator.md) to see more information about this generator.
 
+Or use CDN (works with Rails 7 importmap/ESBuild variant but not with Material theme):
+
+Add jquery-ui (if it wasn't added before):
+app/javascript/active_admin.js
+```js
+import 'jquery-ui/ui/widget'
+import 'jquery-ui/ui/widgets/mouse'
+```
+or via CDN
+```ruby
+config.register_javascript 'https://cdn.jsdelivr.net/combine/npm/jquery-ui@1.13.1,npm/jquery-ui@1.13.1/ui/widgets/mouse.min.js'
+```
+
+Add to initializers/active_admin.rb
+```ruby
+config.register_javascript 'https://cdn.jsdelivr.net/combine/npm/select2@x.x.x/dist/js/select2.full.min.js'
+config.register_stylesheet 'https://cdn.jsdelivr.net/npm/select2@x.x.x/dist/css/select2.min.css'
+
+# If You are using default theme
+config.register_javascript 'https://unpkg.com/activeadmin_addons_cdn@x.x.x/dist/all_cdn.js'
+# If you want to add css via CDN too
+config.register_stylesheet 'https://unpkg.com/activeadmin_addons_cdn@x.x.x/dist/all_cdn.css'
+```
+
 ## Default changes to behaviour
 
 Installing this gem will enable the following changes by default:

@@ -1,17 +1,17 @@
 {
-  "name": "activeadmin_addons",
-  "version": "1.0.0",
+  "name": "activeadmin_addons_cdn",
+  "version": "1.0.2",
   "description": "Set of addons to help with the activeadmin ui",
-  "main": "src/all.js",
+  "main": "dist/all.js",
   "files": [
-    "src/*"
+    "dist/*"
   ],
   "repository": "https://github.com/platanus/activeadmin_addons.git",
   "author": "Platanus <rubygems@platan.us>",
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp -R app/javascript/activeadmin_addons/* src"
+    "prepublishOnly": "cp -R app/assets/stylesheets/activeadmin_addons dist/stylesheets && cp -R app/javascript/activeadmin_addons/* dist && cp app/assets/javascripts/activeadmin_addons/all.js dist/all_cdn.js && sass app/assets/stylesheets/activeadmin_addons/activeadmin_addons.scss/:dist/all_cdn.css --no-source-map"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -21,7 +21,8 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup-plugin-uglify": "^6.0.4",
+    "sass": "^1.50.0"
   },
   "dependencies": {
     "jquery-datetimepicker": "^2.5.21",
